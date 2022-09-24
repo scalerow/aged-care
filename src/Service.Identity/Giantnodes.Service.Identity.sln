@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32519.379
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".referenced", ".referenced", "{8277259D-A671-4EEA-8EF0-3FE0C3FC37FE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Infrastructure", "..\Infrastructure\src\Infrastructure\Giantnodes.Infrastructure.csproj", "{59E69B77-AC1E-47F3-B2DE-781E8F11DE61}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Infrastructure.MassTransit", "..\Infrastructure.MassTransit\src\Infrastructure.MassTransit\Giantnodes.Infrastructure.MassTransit.csproj", "{6460765E-04C5-4580-BB41-BE7B70233737}"
+EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{80118CC8-740D-41AC-AB67-50AC19009B85}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Service.Identity.Abstractions", "src\Abstractions\Giantnodes.Service.Identity.Abstractions.csproj", "{2AAA631F-BA59-469D-9390-054F426CDDE5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Service.Identity.Api", "src\Api\Giantnodes.Service.Identity.Api.csproj", "{FC71D423-2229-403D-B27E-85886771EA92}"
 EndProject
@@ -15,9 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Service.Identity
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{3B07FFE9-63CA-432B-AA60-145366563D56}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".referenced", ".referenced", "{8277259D-A671-4EEA-8EF0-3FE0C3FC37FE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Service.Identity.Application.Tests", "tests\Application.Tests\Giantnodes.Service.Identity.Application.Tests.csproj", "{CFCA92FF-B80B-464D-87F2-181774F74C27}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Infrastructure", "..\Infrastructure\src\Infrastructure\Giantnodes.Infrastructure.csproj", "{59E69B77-AC1E-47F3-B2DE-781E8F11DE61}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Giantnodes.Service.Identity.Shared.Tests", "tests\Shared.Tests\Giantnodes.Service.Identity.Shared.Tests.csproj", "{F116387B-24AF-4183-993C-E1B56985463D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,6 +33,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2AAA631F-BA59-469D-9390-054F426CDDE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2AAA631F-BA59-469D-9390-054F426CDDE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2AAA631F-BA59-469D-9390-054F426CDDE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2AAA631F-BA59-469D-9390-054F426CDDE5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FC71D423-2229-403D-B27E-85886771EA92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FC71D423-2229-403D-B27E-85886771EA92}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC71D423-2229-403D-B27E-85886771EA92}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -45,16 +57,32 @@ Global
 		{59E69B77-AC1E-47F3-B2DE-781E8F11DE61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59E69B77-AC1E-47F3-B2DE-781E8F11DE61}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59E69B77-AC1E-47F3-B2DE-781E8F11DE61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6460765E-04C5-4580-BB41-BE7B70233737}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6460765E-04C5-4580-BB41-BE7B70233737}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6460765E-04C5-4580-BB41-BE7B70233737}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6460765E-04C5-4580-BB41-BE7B70233737}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFCA92FF-B80B-464D-87F2-181774F74C27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFCA92FF-B80B-464D-87F2-181774F74C27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFCA92FF-B80B-464D-87F2-181774F74C27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFCA92FF-B80B-464D-87F2-181774F74C27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F116387B-24AF-4183-993C-E1B56985463D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F116387B-24AF-4183-993C-E1B56985463D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F116387B-24AF-4183-993C-E1B56985463D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F116387B-24AF-4183-993C-E1B56985463D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{2AAA631F-BA59-469D-9390-054F426CDDE5} = {80118CC8-740D-41AC-AB67-50AC19009B85}
 		{FC71D423-2229-403D-B27E-85886771EA92} = {80118CC8-740D-41AC-AB67-50AC19009B85}
 		{37BE75EC-6DAA-4A7A-A89B-EDE59C6ADA85} = {80118CC8-740D-41AC-AB67-50AC19009B85}
 		{E64D2108-6815-46E3-8483-DE967453576C} = {80118CC8-740D-41AC-AB67-50AC19009B85}
 		{6E120F7B-CFD1-4507-AB0A-D71E2AB9F6F0} = {80118CC8-740D-41AC-AB67-50AC19009B85}
 		{59E69B77-AC1E-47F3-B2DE-781E8F11DE61} = {8277259D-A671-4EEA-8EF0-3FE0C3FC37FE}
+		{6460765E-04C5-4580-BB41-BE7B70233737} = {8277259D-A671-4EEA-8EF0-3FE0C3FC37FE}
+		{CFCA92FF-B80B-464D-87F2-181774F74C27} = {3B07FFE9-63CA-432B-AA60-145366563D56}
+		{F116387B-24AF-4183-993C-E1B56985463D} = {3B07FFE9-63CA-432B-AA60-145366563D56}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0CCEBC05-C520-4A39-99F6-2B6ED2602857}

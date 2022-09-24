@@ -1,6 +1,8 @@
-﻿using Giantnodes.Service.Identity.Domain.Identity;
+﻿using Giantnodes.Infrastructure.Masstransit.Validation;
+using Giantnodes.Service.Identity.Domain.Identity;
 using Giantnodes.Service.Identity.Persistance.OpenId;
 using Giantnodes.Service.Identity.Persistence;
+using MassTransit;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
@@ -9,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using OpenIddict.Abstractions;
 using OpenIddict.Validation.AspNetCore;
 using Quartz;
+using System.Reflection;
 
 namespace Giantnodes.Service.Identity.Application
 {
@@ -23,7 +26,7 @@ namespace Giantnodes.Service.Identity.Application
             return services;
         }
 
-        private static IServiceCollection AddQuartzServices(this IServiceCollection services, IConfiguration configuration, IHostEnvironment env)
+        public static IServiceCollection AddQuartzServices(this IServiceCollection services, IConfiguration configuration, IHostEnvironment env)
         {
             services.AddQuartz(options =>
             {
@@ -37,7 +40,7 @@ namespace Giantnodes.Service.Identity.Application
             return services;
         }
 
-        private static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration configuration, IHostEnvironment env)
+        public static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration configuration, IHostEnvironment env)
         {
             services
                 .AddIdentity<ApplicationUser, ApplicationRole>(options =>
@@ -67,7 +70,7 @@ namespace Giantnodes.Service.Identity.Application
             return services;
         }
 
-        private static IServiceCollection AddOpenIddictServices(this IServiceCollection services, IConfiguration configuration, IHostEnvironment env)
+        public static IServiceCollection AddOpenIddictServices(this IServiceCollection services, IConfiguration configuration, IHostEnvironment env)
         {
             services
                 .AddAuthentication(options => options.DefaultAuthenticateScheme = OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme);
@@ -121,7 +124,7 @@ namespace Giantnodes.Service.Identity.Application
                         .SetUserinfoEndpointUris("/connect/userinfo");
 
                     options
-                        .RegisterScopes(OpenIddictConstants.Scopes.Email, OpenIddictConstants.Scopes.Profile, OpenIddictConstants.Scopes.Roles, OpenIddictConstants.Scopes.OfflineAccess);
+                        .RegisterScopes(OpenIddictConstants.Scopes.Email, OpenIddictConstants.Scopes.Profile, OpenIddictConstants.Scopes.Roles);
 
                     options
                         .SetRefreshTokenReuseLeeway(TimeSpan.Zero);
@@ -130,6 +133,27 @@ namespace Giantnodes.Service.Identity.Application
                 {
                     options.UseLocalServer();
                     options.UseAspNetCore();
+                });
+
+            return services;
+        }
+
+        private static IServiceCollection AddMassTransitServices(this IServiceCollection services, IConfiguration configuration)
+        {
+            services
+                .AddMassTransit(options =>
+                {
+                    options
+                        .AddConsumers(new[] { Assembly.GetExecutingAssembly(), Assembly.Load("Giantnodes.Dashboard.Api") });
+
+                    options
+                        .SetKebabCaseEndpointNameFormatter();
+
+                    options.UsingRabbitMq((context, config) =>
+                    {
+                        config.UseConsumeFilter(typeof(FluentValidationFilter<>), context);
+                        config.ConfigureEndpoints(context);
+                    });
                 });
 
             return services;
