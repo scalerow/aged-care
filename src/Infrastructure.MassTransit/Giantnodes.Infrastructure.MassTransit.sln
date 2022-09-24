@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32519.379
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{57DE9CFF-DD44-4CCE-A340-4EBCD646FDB2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Infrastructure.MassTransit", "src\Infrastructure.MassTransit\Giantnodes.Infrastructure.MassTransit.csproj", "{BD700A0B-3D11-47A6-92F5-4533B10BB524}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{9BD893BA-4A6E-432F-8868-A7DBAC460034}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".referenced", ".referenced", "{70A16FF1-CF6B-4E28-B5FA-A53A49AB5E2D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Infrastructure", "..\Infrastructure\src\Infrastructure\Giantnodes.Infrastructure.csproj", "{6F9D14AD-2B5F-42BA-A130-2234C9CC4C5F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BD700A0B-3D11-47A6-92F5-4533B10BB524}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD700A0B-3D11-47A6-92F5-4533B10BB524}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD700A0B-3D11-47A6-92F5-4533B10BB524}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD700A0B-3D11-47A6-92F5-4533B10BB524}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F9D14AD-2B5F-42BA-A130-2234C9CC4C5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F9D14AD-2B5F-42BA-A130-2234C9CC4C5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F9D14AD-2B5F-42BA-A130-2234C9CC4C5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F9D14AD-2B5F-42BA-A130-2234C9CC4C5F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BD700A0B-3D11-47A6-92F5-4533B10BB524} = {57DE9CFF-DD44-4CCE-A340-4EBCD646FDB2}
+		{6F9D14AD-2B5F-42BA-A130-2234C9CC4C5F} = {70A16FF1-CF6B-4E28-B5FA-A53A49AB5E2D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C517CDC8-3A37-487A-BE27-2E500AA73DCF}
+	EndGlobalSection
+EndGlobal
