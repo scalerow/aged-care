@@ -28,7 +28,11 @@ namespace Giantnodes.Service.Identity.Api
             app
                 .UseRouting()
                 .UseAuthentication()
-                .UseAuthorization();
+                .UseAuthorization()
+                .UseEndpoints(endpoint =>
+                {
+                    endpoint.MapControllers();
+                });
         }
     }
 }
