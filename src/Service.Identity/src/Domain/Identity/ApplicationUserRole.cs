@@ -5,8 +5,8 @@ namespace Giantnodes.Service.Identity.Domain.Identity
 {
     public class ApplicationUserRole : IdentityUserRole<Guid>, ITimestampableEntity
     {
-        public DateTime CreatedAt { get; set; }
-
         public DateTime? UpdatedAt { get; set; }
+
+        public DateTime CreatedAt { get; set; }
     }
 }

@@ -15,9 +15,9 @@ namespace Giantnodes.Service.Identity.Domain.Identity
         [PersonalData]
         public Gender Gender { get; set; }
 
-        public DateTime CreatedAt { get; set; }
-
         public DateTime? UpdatedAt { get; set; }
+
+        public DateTime CreatedAt { get; set; }
 
         public virtual string FullName => $"{GivenName} {FamilyName}";
     }

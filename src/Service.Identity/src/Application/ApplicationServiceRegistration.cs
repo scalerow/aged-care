@@ -20,6 +20,8 @@ namespace Giantnodes.Service.Identity.Application
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration configuration, IHostEnvironment env)
         {
+            services.AddPersistenceServices(configuration);
+            
             services.AddMailServices(configuration);
 
             services.AddQuartzServices(configuration, env);

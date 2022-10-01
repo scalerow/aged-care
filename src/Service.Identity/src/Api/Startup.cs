@@ -1,5 +1,4 @@
 ﻿using Giantnodes.Service.Identity.Application;
-using Giantnodes.Service.Identity.Persistence;
 
 namespace Giantnodes.Service.Identity.Api
 {
@@ -16,7 +15,6 @@ namespace Giantnodes.Service.Identity.Api
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddPersistenceServices(_configuration);
             services.AddApplicationServices(_configuration, _environment);
         }
 
