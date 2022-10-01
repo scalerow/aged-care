@@ -1,0 +1,61 @@
+name: .NET
+
+on:
+  push:
+    paths:
+      - 'src/**'
+  
+  pull_request:
+    paths:
+      - 'src/**'
+  
+  workflow_dispatch:
+
+jobs:
+  test-infrastructure-mail:
+    name: Infrastructure.Mail
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 6.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore
+        working-directory: src/Infrastructure.Mail
+
+      - name: Build
+        run: dotnet build --no-restore
+        working-directory: src/Infrastructure.Mail
+
+      - name: Test
+        run: dotnet test --no-build --verbosity normal
+        working-directory: src/Infrastructure.Mail
+
+  test-service-identity:
+    name: Service.Identity
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v2
+        with:
+          dotnet-version: 6.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore
+        working-directory: src/Service.Identity
+
+      - name: Build
+        run: dotnet build --no-restore
+        working-directory: src/Service.Identity
+
+      - name: Test
+        run: dotnet test --no-build --verbosity normal
+        working-directory: src/Service.Identity
