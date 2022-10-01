@@ -1,0 +1,23 @@
+﻿@using Giantnodes.Identity.Mail.Templates
+
+@model EmailConfirmationTemplate
+
+@{
+    Layout = "_Layout";
+}
+
+<mj-section background-color="#ffffff">
+    <mj-column>
+        <mj-text padding="10px 25px" font-size="20px" color="#512d0b">
+            <strong>Hi @Model.FullName!</strong>
+        </mj-text>
+        <mj-text font-size="14px" line-height="20px">
+            We're excited to have you! But before you get started, we'll first need
+            to verify your email address.
+        </mj-text>
+
+        <mj-button href="@Model.VerifyLink?t=@Model.Code" width="100%" background-color="#2cc76a">
+            <strong>Verify email</strong>
+        </mj-button>
+    </mj-column>
+</mj-section>

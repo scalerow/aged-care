@@ -1,4 +1,5 @@
-﻿using Giantnodes.Service.Identity.Abstractions.Registration.Events;
+﻿using Giantnodes.Service.Identity.Abstractions.Registration.Commands;
+using Giantnodes.Service.Identity.Abstractions.Registration.Events;
 using Giantnodes.Service.Identity.Abstractions.Registration.Requests;
 using Giantnodes.Service.Identity.Domain.Identity;
 using MassTransit;
@@ -46,6 +47,10 @@ namespace Giantnodes.Service.Identity.Application.Features.Registration
                 await context.RejectAsync<CreateUserRequestRejected, CreateUserRequestRejection>(CreateUserRequestRejection.IDENTITY_ERROR);
                 return;
             }
+
+            var topic = KebabCaseEndpointNameFormatter.Instance.Message<SendEmailConfirmationCommand>();
+            var endpoint = await context.GetSendEndpoint(new Uri($"queue:{topic}"));
+            await endpoint.Send<SendEmailConfirmationCommand>(new { Email = user.Email });
 
             await context.Publish<UserCreatedEvent>(new { UserId = user.Id });
             await context.RespondAsync<CreateUserRequestResult>(new { UserId = user.Id });

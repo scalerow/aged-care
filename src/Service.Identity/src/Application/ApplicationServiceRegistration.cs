@@ -1,4 +1,5 @@
-﻿using Giantnodes.Infrastructure.Masstransit.Validation;
+﻿using Giantnodes.Infrastructure.Mail;
+using Giantnodes.Infrastructure.Masstransit.Validation;
 using Giantnodes.Service.Identity.Domain.Identity;
 using Giantnodes.Service.Identity.Persistance.OpenId;
 using Giantnodes.Service.Identity.Persistence;
@@ -19,14 +20,17 @@ namespace Giantnodes.Service.Identity.Application
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration configuration, IHostEnvironment env)
         {
+            services.AddMailServices(configuration);
+
             services.AddQuartzServices(configuration, env);
             services.AddIdentityServices(configuration, env);
             services.AddOpenIddictServices(configuration, env);
+            services.AddMassTransitServices(configuration, env);
 
             return services;
         }
 
-        public static IServiceCollection AddQuartzServices(this IServiceCollection services, IConfiguration configuration, IHostEnvironment env)
+        private static IServiceCollection AddQuartzServices(this IServiceCollection services, IConfiguration configuration, IHostEnvironment env)
         {
             services.AddQuartz(options =>
             {
@@ -40,7 +44,7 @@ namespace Giantnodes.Service.Identity.Application
             return services;
         }
 
-        public static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration configuration, IHostEnvironment env)
+        private static IServiceCollection AddIdentityServices(this IServiceCollection services, IConfiguration configuration, IHostEnvironment env)
         {
             services
                 .AddIdentity<ApplicationUser, ApplicationRole>(options =>
@@ -70,7 +74,7 @@ namespace Giantnodes.Service.Identity.Application
             return services;
         }
 
-        public static IServiceCollection AddOpenIddictServices(this IServiceCollection services, IConfiguration configuration, IHostEnvironment env)
+        private static IServiceCollection AddOpenIddictServices(this IServiceCollection services, IConfiguration configuration, IHostEnvironment env)
         {
             services
                 .AddAuthentication(options => options.DefaultAuthenticateScheme = OpenIddictValidationAspNetCoreDefaults.AuthenticationScheme);
@@ -138,7 +142,7 @@ namespace Giantnodes.Service.Identity.Application
             return services;
         }
 
-        private static IServiceCollection AddMassTransitServices(this IServiceCollection services, IConfiguration configuration)
+        private static IServiceCollection AddMassTransitServices(this IServiceCollection services, IConfiguration configuration, IHostEnvironment env)
         {
             services
                 .AddMassTransit(options =>

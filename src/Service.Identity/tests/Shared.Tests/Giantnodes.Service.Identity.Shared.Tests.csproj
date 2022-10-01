@@ -12,7 +12,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\src\Domain\Giantnodes.Service.Identity.Domain.csproj" />
+		<ProjectReference Include="..\..\src\Domain\Giantnodes.Service.Identity.Domain.csproj" />
 	</ItemGroup>
 
 </Project>

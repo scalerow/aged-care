@@ -1,4 +1,5 @@
-﻿using Giantnodes.Service.Identity.Abstractions.Registration.Events;
+﻿using Giantnodes.Service.Identity.Abstractions.Registration.Commands;
+using Giantnodes.Service.Identity.Abstractions.Registration.Events;
 using Giantnodes.Service.Identity.Abstractions.Registration.Requests;
 using Giantnodes.Service.Identity.Application.Features.Registration;
 using Giantnodes.Service.Identity.Persistence;
@@ -87,7 +88,30 @@ namespace Giantnodes.Service.Identity.Application.Tests.Features.Registration
         }
 
         [Fact]
-        public async Task Publishes_UserCreatedEvent_When_User_Registers()
+        public async Task Send_SendEmailConfirmationRequest_When_User_Registers()
+        {
+            // Arrange
+            var command = new CreateUserRequest
+            {
+                Email = "example@giantnodes.com",
+                GivenName = "John",
+                FamilyName = "Doe",
+                Password = SecurePassword
+            };
+
+            var harness = _provider.GetRequiredService<ITestHarness>();
+            await harness.Start();
+
+            // Act
+            var client = harness.GetRequestClient<CreateUserRequest>();
+            await client.GetResponse<CreateUserRequestResult>(command);
+
+            // Assert
+            Assert.True(await harness.Sent.Any<SendEmailConfirmationCommand>());
+        }
+
+        [Fact]
+        public async Task Publish_UserCreatedEvent_When_User_Registers()
         {
             // Arrange
             var command = new CreateUserRequest

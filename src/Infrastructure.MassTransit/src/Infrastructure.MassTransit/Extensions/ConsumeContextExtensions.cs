@@ -1,5 +1,4 @@
-﻿using Giantnodes.Infrastructure.Exceptions;
-using Giantnodes.Infrastructure.Extensions;
+﻿using Giantnodes.Infrastructure.Extensions;
 using Giantnodes.Infrastructure.MassTransit;
 
 namespace MassTransit
