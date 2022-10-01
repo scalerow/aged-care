@@ -15,6 +15,8 @@ namespace Giantnodes.Service.Identity.Mail.Templates
 
         public string Code { get; set; } = string.Empty;
 
+        public string Email { get; set; } = string.Empty;
+
         public string FullName { get; set; } = string.Empty;
 
         public string VerifyLink = string.Empty;

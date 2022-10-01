@@ -15,7 +15,6 @@ namespace Giantnodes.Service.Identity.Application.Features.Registration.Requests
             _manager = manager;
         }
 
-
         public async Task Consume(ConsumeContext<ConfirmEmailRequest> context)
         {
             var user = await _manager.FindByEmailAsync(context.Message.Email);
