@@ -2,16 +2,17 @@
 
 namespace Giantnodes.Service.Tenants.Domain.Entities
 {
-    public class Tenant : ITimestampableEntity
+    public class TenantUser : ITimestampableEntity
     {
         public Guid Id { get; set; }
 
-        public string Name { get; set; } = string.Empty;
+        public Guid TenantId { get; set; }
+        public virtual Tenant? Tenant { get; set; }
+
+        public Guid UserId { get; set; }
 
         public DateTime? UpdatedAt { get; set; }
 
         public DateTime CreatedAt { get; set; }
-
-        public virtual ICollection<TenantUser> Users { get; set; } = new List<TenantUser>();
     }
 }

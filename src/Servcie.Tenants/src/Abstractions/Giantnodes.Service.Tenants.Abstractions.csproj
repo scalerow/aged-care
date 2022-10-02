@@ -6,4 +6,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Invitations\Requests\AcceptInvitation\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Infrastructure.MassTransit\src\Infrastructure.MassTransit\Giantnodes.Infrastructure.MassTransit.csproj" />
+  </ItemGroup>
+
 </Project>

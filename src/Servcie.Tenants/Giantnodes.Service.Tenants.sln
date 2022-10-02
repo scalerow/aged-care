@@ -9,17 +9,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Infrastructure",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AAAD8243-D210-47FF-AFD3-F6C9E413105C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Service.Tenant.Abstractions", "src\Abstractions\Giantnodes.Service.Tenants.Abstractions.csproj", "{6EC39805-5B8C-4398-B249-D70C9E1C48D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Service.Tenants.Abstractions", "src\Abstractions\Giantnodes.Service.Tenants.Abstractions.csproj", "{6EC39805-5B8C-4398-B249-D70C9E1C48D1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Service.Tenant.Api", "src\Api\Giantnodes.Service.Tenants.Api.csproj", "{29F24BAA-6B2A-4B30-9087-8AC918294AEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Service.Tenants.Api", "src\Api\Giantnodes.Service.Tenants.Api.csproj", "{29F24BAA-6B2A-4B30-9087-8AC918294AEF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Service.Tenant.Application", "src\Application\Giantnodes.Service.Tenants.Application.csproj", "{7E4659A0-632D-4FE9-9030-856DC2928A5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Service.Tenants.Application", "src\Application\Giantnodes.Service.Tenants.Application.csproj", "{7E4659A0-632D-4FE9-9030-856DC2928A5A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Service.Tenant.Domain", "src\Domain\Giantnodes.Service.Tenants.Domain.csproj", "{55F38C3D-76AC-4088-947E-7A57640590C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Service.Tenants.Domain", "src\Domain\Giantnodes.Service.Tenants.Domain.csproj", "{55F38C3D-76AC-4088-947E-7A57640590C7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Service.Tenant.Persistance", "src\Persistance\Giantnodes.Service.Tenants.Persistance.csproj", "{45109F74-4468-4610-9566-C51775A5001C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Service.Tenants.Persistance", "src\Persistance\Giantnodes.Service.Tenants.Persistance.csproj", "{45109F74-4468-4610-9566-C51775A5001C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{C998A9B2-03AC-42A4-AB77-4715A1C31AD7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Infrastructure.MassTransit", "..\Infrastructure.MassTransit\src\Infrastructure.MassTransit\Giantnodes.Infrastructure.MassTransit.csproj", "{B9AE1065-08F4-4ABF-B954-4CCF35732395}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Service.Identity.Abstractions", "..\Service.Identity\src\Abstractions\Giantnodes.Service.Identity.Abstractions.csproj", "{9707E586-646C-4CD5-BE9A-2AEBB7A9C9BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +31,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B45C368E-4F87-436A-85A6-8413836974C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B45C368E-4F87-436A-85A6-8413836974C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B45C368E-4F87-436A-85A6-8413836974C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B45C368E-4F87-436A-85A6-8413836974C8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6EC39805-5B8C-4398-B249-D70C9E1C48D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6EC39805-5B8C-4398-B249-D70C9E1C48D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6EC39805-5B8C-4398-B249-D70C9E1C48D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -47,21 +55,27 @@ Global
 		{45109F74-4468-4610-9566-C51775A5001C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45109F74-4468-4610-9566-C51775A5001C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45109F74-4468-4610-9566-C51775A5001C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B45C368E-4F87-436A-85A6-8413836974C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B45C368E-4F87-436A-85A6-8413836974C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B45C368E-4F87-436A-85A6-8413836974C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B45C368E-4F87-436A-85A6-8413836974C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9AE1065-08F4-4ABF-B954-4CCF35732395}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9AE1065-08F4-4ABF-B954-4CCF35732395}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9AE1065-08F4-4ABF-B954-4CCF35732395}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9AE1065-08F4-4ABF-B954-4CCF35732395}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9707E586-646C-4CD5-BE9A-2AEBB7A9C9BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9707E586-646C-4CD5-BE9A-2AEBB7A9C9BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9707E586-646C-4CD5-BE9A-2AEBB7A9C9BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9707E586-646C-4CD5-BE9A-2AEBB7A9C9BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{B45C368E-4F87-436A-85A6-8413836974C8} = {173B2F4F-AA77-405D-9F87-761BB778AD48}
 		{6EC39805-5B8C-4398-B249-D70C9E1C48D1} = {AAAD8243-D210-47FF-AFD3-F6C9E413105C}
 		{29F24BAA-6B2A-4B30-9087-8AC918294AEF} = {AAAD8243-D210-47FF-AFD3-F6C9E413105C}
 		{7E4659A0-632D-4FE9-9030-856DC2928A5A} = {AAAD8243-D210-47FF-AFD3-F6C9E413105C}
 		{55F38C3D-76AC-4088-947E-7A57640590C7} = {AAAD8243-D210-47FF-AFD3-F6C9E413105C}
 		{45109F74-4468-4610-9566-C51775A5001C} = {AAAD8243-D210-47FF-AFD3-F6C9E413105C}
-		{B45C368E-4F87-436A-85A6-8413836974C8} = {173B2F4F-AA77-405D-9F87-761BB778AD48}
+		{B9AE1065-08F4-4ABF-B954-4CCF35732395} = {173B2F4F-AA77-405D-9F87-761BB778AD48}
+		{9707E586-646C-4CD5-BE9A-2AEBB7A9C9BF} = {173B2F4F-AA77-405D-9F87-761BB778AD48}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E750D0FA-568E-4B48-B430-B3A3FD45B71C}
