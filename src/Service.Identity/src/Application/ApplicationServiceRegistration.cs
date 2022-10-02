@@ -150,7 +150,7 @@ namespace Giantnodes.Service.Identity.Application
                 .AddMassTransit(options =>
                 {
                     options
-                        .AddConsumers(new[] { Assembly.GetExecutingAssembly(), Assembly.Load("Giantnodes.Dashboard.Api") });
+                        .AddConsumers(new[] { Assembly.GetExecutingAssembly() });
 
                     options
                         .SetKebabCaseEndpointNameFormatter();
