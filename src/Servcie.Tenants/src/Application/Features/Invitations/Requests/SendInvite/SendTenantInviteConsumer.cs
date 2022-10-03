@@ -1,8 +1,8 @@
 ﻿using Giantnodes.Infrastructure.Mail.Services;
 using Giantnodes.Service.Identity.Abstractions.Users.Requests;
-using Giantnodes.Service.Identity.Mail.Templates;
 using Giantnodes.Service.Tenants.Abstractions.Invitations.Requests;
 using Giantnodes.Service.Tenants.Domain.Entities;
+using Giantnodes.Service.Tenants.Mail.Templates;
 using Giantnodes.Service.Tenants.Persistance;
 using MassTransit;
 using Microsoft.EntityFrameworkCore;
@@ -42,12 +42,11 @@ namespace Giantnodes.Service.Tenants.Application.Features.Invitations.Requests
                 return;
             }
 
-            Response response = await _client.GetResponse<GetUserByIdRequestResult, GetUserByIdRequestRejected>(new { context.Message.UserId });
+            Response response = await _client.GetResponse<GetUserByIdRequestResult>(new { context.Message.UserId });
             var user = response switch
             {
                 (_, GetUserByIdRequestResult result) => result,
-                (_, GetUserByIdRequestRejected rejected) => null,
-                _ => throw new InvalidOperationException()
+                _ => null
             };
 
             if (user == null)
@@ -84,9 +83,9 @@ namespace Giantnodes.Service.Tenants.Application.Features.Invitations.Requests
             var template = new TenentInvitationTemplate
             {
                 Code = invite.Code,
-                TenantName = tenant.Name,
-                UserEmail = user.Email,
-                UserFullName = $"{user.GivenName} {user.FamilyName}",
+                Tenant = tenant,
+                Email = user.Email,
+                GivenName = $"{user.GivenName} {user.FamilyName}",
             };
 
             var address = new MailboxAddress($"{user.GivenName} {user.FamilyName}", user.Email);

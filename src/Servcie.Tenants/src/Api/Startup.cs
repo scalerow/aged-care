@@ -24,13 +24,7 @@ namespace Giantnodes.Service.Tenants.Api
                 app.UseHttpsRedirection();
 
             app
-                .UseRouting()
-                .UseAuthentication()
-                .UseAuthorization()
-                .UseEndpoints(endpoint =>
-                {
-                    endpoint.MapControllers();
-                });
+                .UseRouting();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿@using Giantnodes.Services.Tenants.Mail.Templates
+﻿@using Giantnodes.Service.Tenants.Domain.Entities
+@using Giantnodes.Service.Tenants.Mail.Templates
 
 @model TenentInvitationTemplate
 
@@ -9,26 +10,26 @@
 <mj-section background-color="#ffffff">
   <mj-column>
     <mj-text padding="10px 25px" font-size="20px">
-      <strong>Hi @Model.UserFullName!</strong>
+      <strong>Hi @Model.GivenName!</strong>
     </mj-text>
+
     <mj-text font-size="14px" line-height="20px">
-      You have been invited to join <strong>@Model.TenantName</strong> by <strong>TODO</strong>, to accept the
+      You have been invited to join <strong>@Model.Tenant.Name</strong> by <strong>TODO</strong>, to accept the
       invitation use the button below.
     </mj-text>
 
-    <mj-button href="&t=@Model.Code" width="100%" background-color="#2cc76a">
+    <mj-button href="www.giantnodes.com?t=@Model.Code" width="100%" background-color="#2cc76a">
       <strong>Accept Invitation</strong>
     </mj-button>
 
     <mj-text font-size="14px" line-height="20px">
-      If you wish to decline this invitation, you can ignore this and thie link will expire in
-      @TenantInvite.LifetimeHours hours.
+      If you wish to decline this invitation, you can ignore this and the link will expire in @TenantInvite.LifetimeHours hours.
     </mj-text>
 
     <mj-text font-size="14px" line-height="20px">
       <strong>Note:</strong> This invitation was intended for
-      <a href="mailto:@Model.UserEmail" target="_blank">@Model.UserEmail</a>. If you were not expecting this invitation,
-      you can ignore this email. If TODO is sending you too many emails, you can <a>report abuse</a>.
+      <a href="mailto:@Model.Email" target="_blank">@Model.Email</a>. If you were not expecting this invitation,
+      you can ignore this email. If TODO is sending you too many emails, you can <a href="www.giantnodes.com">report abuse</a>.
     </mj-text>
   </mj-column>
 </mj-section>

@@ -1,4 +1,5 @@
-﻿using Giantnodes.Infrastructure.Masstransit.Validation;
+﻿using Giantnodes.Infrastructure.Mail;
+using Giantnodes.Infrastructure.Masstransit.Validation;
 using Giantnodes.Service.Tenants.Persistance;
 using MassTransit;
 using Microsoft.Extensions.Configuration;
@@ -12,6 +13,8 @@ namespace Giantnodes.Service.Tenants.Application
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration configuration, IHostEnvironment env)
         {
+            services.AddMailServices(configuration);
+
             services.AddPersistenceServices(configuration);
 
             services.AddMassTransitServices(configuration, env);
