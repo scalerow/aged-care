@@ -24,13 +24,13 @@ namespace Giantnodes.Service.Identity.Application.Features.Registration
             var user = await _manager.FindByEmailAsync(context.Message.Email);
             if (user == null)
             {
-                await context.RejectAsync<SendEmailConfirmationCommandRejected, SendEmailConfirmationCommandRejection>(SendEmailConfirmationCommandRejection.NOT_FOUND);
+                await context.RejectAsync<SendEmailConfirmationCommandRejected, SendEmailConfirmationCommandRejection>(SendEmailConfirmationCommandRejection.NotFound);
                 return;
             }
 
             if (user.EmailConfirmed)
             {
-                await context.RejectAsync<SendEmailConfirmationCommandRejected, SendEmailConfirmationCommandRejection>(SendEmailConfirmationCommandRejection.ALREADY_CONFIRMED);
+                await context.RejectAsync<SendEmailConfirmationCommandRejected, SendEmailConfirmationCommandRejection>(SendEmailConfirmationCommandRejection.AlreadyConfirmed);
                 return;
             }
 

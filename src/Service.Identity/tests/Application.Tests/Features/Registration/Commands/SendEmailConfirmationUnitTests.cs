@@ -55,7 +55,7 @@ namespace Giantnodes.Service.Identity.Application.Tests.Features.Registration
 
             // Assert
             Assert.True(await harness.Sent.Any<SendEmailConfirmationCommandRejected>());
-            Assert.Equal(SendEmailConfirmationCommandRejection.NOT_FOUND, response.Message.ErrorCode);
+            Assert.Equal(SendEmailConfirmationCommandRejection.NotFound, response.Message.ErrorCode);
         }
 
         [Fact]
@@ -83,7 +83,7 @@ namespace Giantnodes.Service.Identity.Application.Tests.Features.Registration
 
             // Assert
             Assert.True(await harness.Sent.Any<SendEmailConfirmationCommandRejected>());
-            Assert.Equal(SendEmailConfirmationCommandRejection.ALREADY_CONFIRMED, response.Message.ErrorCode);
+            Assert.Equal(SendEmailConfirmationCommandRejection.AlreadyConfirmed, response.Message.ErrorCode);
         }
 
         [Fact]

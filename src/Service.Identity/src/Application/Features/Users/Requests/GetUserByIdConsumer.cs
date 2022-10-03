@@ -19,7 +19,7 @@ namespace Giantnodes.Service.Identity.Application.Features.Users.Requests
             var user = await _database.Users.FirstOrDefaultAsync(x => x.Id == context.Message.UserId, context.CancellationToken);
             if (user == null)
             {
-                await context.RejectAsync<GetUserByIdRequestRejected, GetUserByIdRequestRejection>(GetUserByIdRequestRejection.NOT_FOUND);
+                await context.RejectAsync<GetUserByIdRequestRejected, GetUserByIdRequestRejection>(GetUserByIdRequestRejection.NotFound);
                 return;
             }
 

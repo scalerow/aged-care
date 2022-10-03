@@ -60,7 +60,7 @@ namespace Giantnodes.Service.Identity.Application.Tests.Features.Registration
 
             // Assert
             Assert.True(await harness.Sent.Any<CreateUserRequestRejected>());
-            Assert.Equal(CreateUserRequestRejection.DUPLICATE_EMAIL, response.Message.ErrorCode);
+            Assert.Equal(CreateUserRequestRejection.DuplicateEmail, response.Message.ErrorCode);
         }
 
         [Fact]
@@ -84,7 +84,7 @@ namespace Giantnodes.Service.Identity.Application.Tests.Features.Registration
 
             // Assert
             Assert.True(await harness.Sent.Any<CreateUserRequestRejected>());
-            Assert.Equal(CreateUserRequestRejection.PASSWORD_TOO_WEAK, response.Message.ErrorCode);
+            Assert.Equal(CreateUserRequestRejection.PasswordTooWeak, response.Message.ErrorCode);
         }
 
         [Fact]

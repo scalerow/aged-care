@@ -22,7 +22,7 @@ namespace Giantnodes.Service.Identity.Application.Features.Registration
             var strength = Zxcvbn.Core.EvaluatePassword(context.Message.Password, inputs);
             if (strength.Score < 3)
             {
-                await context.RejectAsync<CreateUserRequestRejected, CreateUserRequestRejection>(CreateUserRequestRejection.PASSWORD_TOO_WEAK);
+                await context.RejectAsync<CreateUserRequestRejected, CreateUserRequestRejection>(CreateUserRequestRejection.PasswordTooWeak);
                 return;
             }
 
@@ -39,12 +39,12 @@ namespace Giantnodes.Service.Identity.Application.Features.Registration
             {
                 if (result.Errors.Any(x => x.Code == nameof(_manager.ErrorDescriber.DuplicateEmail)))
                 {
-                    await context.RejectAsync<CreateUserRequestRejected, CreateUserRequestRejection>(CreateUserRequestRejection.DUPLICATE_EMAIL);
+                    await context.RejectAsync<CreateUserRequestRejected, CreateUserRequestRejection>(CreateUserRequestRejection.DuplicateEmail);
                     return;
                 }
 
                 var error = result.Errors.First();
-                await context.RejectAsync<CreateUserRequestRejected, CreateUserRequestRejection>(CreateUserRequestRejection.IDENTITY_ERROR);
+                await context.RejectAsync<CreateUserRequestRejected, CreateUserRequestRejection>(CreateUserRequestRejection.IdentityError);
                 return;
             }
 

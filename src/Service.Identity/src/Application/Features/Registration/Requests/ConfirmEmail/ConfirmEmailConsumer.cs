@@ -20,13 +20,13 @@ namespace Giantnodes.Service.Identity.Application.Features.Registration.Requests
             var user = await _manager.FindByEmailAsync(context.Message.Email);
             if (user == null)
             {
-                await context.RejectAsync<ConfirmEmailRequestRejected, ConfirmEmailRequestRejection>(ConfirmEmailRequestRejection.NOT_FOUND);
+                await context.RejectAsync<ConfirmEmailRequestRejected, ConfirmEmailRequestRejection>(ConfirmEmailRequestRejection.NotFound);
                 return;
             }
 
             if (user.EmailConfirmed)
             {
-                await context.RejectAsync<ConfirmEmailRequestRejected, ConfirmEmailRequestRejection>(ConfirmEmailRequestRejection.ALREADY_CONFIRMED);
+                await context.RejectAsync<ConfirmEmailRequestRejected, ConfirmEmailRequestRejection>(ConfirmEmailRequestRejection.AlreadyConfirmed);
                 return;
             }
 
@@ -34,7 +34,7 @@ namespace Giantnodes.Service.Identity.Application.Features.Registration.Requests
             if (!result.Succeeded)
             {
                 var error = result.Errors.First();
-                await context.RejectAsync<ConfirmEmailRequestRejected, ConfirmEmailRequestRejection>(ConfirmEmailRequestRejection.IDENTITY_ERROR, error.Description);
+                await context.RejectAsync<ConfirmEmailRequestRejected, ConfirmEmailRequestRejection>(ConfirmEmailRequestRejection.IdentityError, error.Description);
                 return;
             }
 
