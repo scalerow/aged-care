@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Service.Tenants.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Service.Tenants.Domain", "src\Domain\Giantnodes.Service.Tenants.Domain.csproj", "{55F38C3D-76AC-4088-947E-7A57640590C7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Service.Tenants.Mail", "src\Giantnodes.Service.Tenants.Mail\Giantnodes.Service.Tenants.Mail.csproj", "{4D0D5944-C39A-4D6B-A71A-4D906C21127F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Service.Tenants.Mail", "src\Mail\Giantnodes.Service.Tenants.Mail.csproj", "{4D0D5944-C39A-4D6B-A71A-4D906C21127F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Service.Tenants.Persistance", "src\Persistance\Giantnodes.Service.Tenants.Persistance.csproj", "{45109F74-4468-4610-9566-C51775A5001C}"
 EndProject
