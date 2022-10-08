@@ -13,4 +13,8 @@
 		<ProjectReference Include="..\Domain\Giantnodes.Service.Tenants.Domain.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="Templates\" />
+	</ItemGroup>
+
 </Project>

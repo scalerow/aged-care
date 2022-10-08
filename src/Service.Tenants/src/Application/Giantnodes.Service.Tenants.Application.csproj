@@ -13,14 +13,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\..\Service.Identity\src\Abstractions\Giantnodes.Service.Identity.Abstractions.csproj" />
 		<ProjectReference Include="..\Abstractions\Giantnodes.Service.Tenants.Abstractions.csproj" />
 		<ProjectReference Include="..\Mail\Giantnodes.Service.Tenants.Mail.csproj" />
 		<ProjectReference Include="..\Persistance\Giantnodes.Service.Tenants.Persistance.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<Folder Include="Features\Invitations\Requests\AcceptInvitation\" />
 	</ItemGroup>
 
 </Project>

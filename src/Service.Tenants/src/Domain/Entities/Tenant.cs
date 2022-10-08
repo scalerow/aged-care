@@ -11,7 +11,5 @@ namespace Giantnodes.Service.Tenants.Domain.Entities
         public DateTime? UpdatedAt { get; set; }
 
         public DateTime CreatedAt { get; set; }
-
-        public virtual ICollection<TenantUser> Users { get; set; } = new List<TenantUser>();
     }
 }
