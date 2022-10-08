@@ -13,6 +13,8 @@ namespace Giantnodes.Service.Tenants.Application
     {
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration configuration, IHostEnvironment env)
         {
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
             services.AddMailServices(configuration);
 
             services.AddPersistenceServices(configuration);

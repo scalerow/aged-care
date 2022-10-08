@@ -9,6 +9,8 @@ namespace Giantnodes.Service.Tenants.Shared.Tests.Bogus
         {
             RuleFor(p => p.Id, f => f.Random.Uuid());
             RuleFor(p => p.Name, f => f.Company.CompanyName());
+            RuleFor(p => p.UpdatedAt, DateTime.UtcNow);
+            RuleFor(p => p.CreatedAt, DateTime.UtcNow);
         }
     }
 }
