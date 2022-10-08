@@ -50,7 +50,7 @@ namespace Giantnodes.Service.Identity.Application.Features.Registration
 
             var topic = KebabCaseEndpointNameFormatter.Instance.Message<SendEmailConfirmationCommand>();
             var endpoint = await context.GetSendEndpoint(new Uri($"queue:{topic}"));
-            await endpoint.Send<SendEmailConfirmationCommand>(new { Email = user.Email });
+            await endpoint.Send<SendEmailConfirmationCommand>(new { user.Email });
 
             await context.Publish<UserCreatedEvent>(new { UserId = user.Id });
             await context.RespondAsync<CreateUserRequestResult>(new { UserId = user.Id });

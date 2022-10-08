@@ -35,6 +35,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Service.Identity
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Infrastructure.Mail.Tests", "..\Infrastructure.Mail\tests\Infrastructure.Mail.Tests\Giantnodes.Infrastructure.Mail.Tests.csproj", "{BBE9AE9B-D527-42FC-9135-FE93D7E82829}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Service.Tenants.Abstractions", "..\Service.Tenants\src\Abstractions\Giantnodes.Service.Tenants.Abstractions.csproj", "{7A4B2E3F-D223-4A99-8AC7-27EC28D01FD5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -93,6 +95,10 @@ Global
 		{BBE9AE9B-D527-42FC-9135-FE93D7E82829}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBE9AE9B-D527-42FC-9135-FE93D7E82829}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBE9AE9B-D527-42FC-9135-FE93D7E82829}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A4B2E3F-D223-4A99-8AC7-27EC28D01FD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A4B2E3F-D223-4A99-8AC7-27EC28D01FD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A4B2E3F-D223-4A99-8AC7-27EC28D01FD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A4B2E3F-D223-4A99-8AC7-27EC28D01FD5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -111,6 +117,7 @@ Global
 		{32E28C18-A482-4F9E-8556-F71B3984CAF3} = {3B07FFE9-63CA-432B-AA60-145366563D56}
 		{F116387B-24AF-4183-993C-E1B56985463D} = {3B07FFE9-63CA-432B-AA60-145366563D56}
 		{BBE9AE9B-D527-42FC-9135-FE93D7E82829} = {8277259D-A671-4EEA-8EF0-3FE0C3FC37FE}
+		{7A4B2E3F-D223-4A99-8AC7-27EC28D01FD5} = {8277259D-A671-4EEA-8EF0-3FE0C3FC37FE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0CCEBC05-C520-4A39-99F6-2B6ED2602857}

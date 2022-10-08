@@ -143,7 +143,7 @@ namespace Giantnodes.Service.Identity.Application.Tests.Features.Registration.Re
         }
 
         [Fact]
-        public async Task Respond_ConfirmEmailResult_When_Email_Confirmed()
+        public async Task Responds_ConfirmEmailRequestResult_When_Email_Confirmed()
         {
             // Arrange
             using var scope = _provider.CreateScope();

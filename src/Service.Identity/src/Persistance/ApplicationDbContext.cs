@@ -1,4 +1,5 @@
 ﻿using Giantnodes.Infrastructure.Abstractions;
+using Giantnodes.Service.Identity.Domain.Entities;
 using Giantnodes.Service.Identity.Domain.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +20,9 @@ namespace Giantnodes.Service.Identity.Persistence
             : base(options)
         {
         }
+
+        public DbSet<UserTenant> UserTenants => Set<UserTenant>();
+        public DbSet<UserTenantInvite> UserTenantInvites => Set<UserTenantInvite>();
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

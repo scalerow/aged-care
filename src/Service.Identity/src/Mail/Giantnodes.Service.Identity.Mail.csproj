@@ -8,6 +8,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\Infrastructure.Mail\src\Infrastructure.Mail\Giantnodes.Infrastructure.Mail.csproj" />
+		<ProjectReference Include="..\Domain\Giantnodes.Service.Identity.Domain.csproj" />
 	</ItemGroup>
 
 </Project>

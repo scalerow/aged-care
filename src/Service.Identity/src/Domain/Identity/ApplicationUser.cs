@@ -1,4 +1,5 @@
 ﻿using Giantnodes.Infrastructure.Abstractions;
+using Giantnodes.Service.Identity.Domain.Entities;
 using Giantnodes.Service.Identity.Domain.Enums;
 using Microsoft.AspNetCore.Identity;
 
@@ -20,5 +21,7 @@ namespace Giantnodes.Service.Identity.Domain.Identity
         public DateTime CreatedAt { get; set; }
 
         public virtual string FullName => $"{GivenName} {FamilyName}";
+
+        public virtual ICollection<UserTenant> Tenants { get; set; } = new List<UserTenant>();
     }
 }
