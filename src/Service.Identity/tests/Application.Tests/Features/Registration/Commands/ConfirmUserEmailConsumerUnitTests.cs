@@ -1,7 +1,7 @@
 ﻿using Bogus;
+using Giantnodes.Service.Identity.Abstractions.Registration.Commands;
 using Giantnodes.Service.Identity.Abstractions.Registration.Events;
-using Giantnodes.Service.Identity.Abstractions.Registration.Requests;
-using Giantnodes.Service.Identity.Application.Features.Registration.Requests;
+using Giantnodes.Service.Identity.Application.Features.Registration.Commands;
 using Giantnodes.Service.Identity.Domain.Identity;
 using Giantnodes.Service.Identity.Persistence;
 using Giantnodes.Service.Identity.Shared.Tests.Bogus;
@@ -12,14 +12,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
-namespace Giantnodes.Service.Identity.Application.Tests.Features.Registration.Requests
+namespace Giantnodes.Service.Identity.Application.Tests.Features.Registration.Commands
 {
-    public class ConfirmEmailConsumerUnitTests
+    public class ConfirmUserEmailConsumerUnitTests
     {
         private readonly ApplicationDbContext _database;
         private readonly ServiceProvider _provider;
 
-        public ConfirmEmailConsumerUnitTests()
+        public ConfirmUserEmailConsumerUnitTests()
         {
             _database = new ApplicationDbContext(new DbContextOptionsBuilder().UseInMemoryDatabase(Guid.NewGuid().ToString()).Options);
             _provider = new ServiceCollection()
@@ -27,7 +27,7 @@ namespace Giantnodes.Service.Identity.Application.Tests.Features.Registration.Re
                 .AddApplicationTestServices()
                 .AddMassTransitTestHarness(options =>
                 {
-                    options.AddConsumer<ConfirmEmailConsumer>();
+                    options.AddConsumer<ConfirmUserEmailConsumer>();
 
                 })
                 .BuildServiceProvider(true);
@@ -37,7 +37,7 @@ namespace Giantnodes.Service.Identity.Application.Tests.Features.Registration.Re
         public async Task Reject_When_User_Not_Found()
         {
             // Arrange
-            var command = new ConfirmEmailRequest
+            var command = new ConfirmUserEmailCommand
             {
                 Email = "exmaple@giantnodes.com",
                 Token = new Faker().Random.Word()
@@ -47,12 +47,12 @@ namespace Giantnodes.Service.Identity.Application.Tests.Features.Registration.Re
             await harness.Start();
 
             // Act
-            var client = harness.GetRequestClient<ConfirmEmailRequest>();
-            var response = await client.GetResponse<ConfirmEmailRequestRejected>(command);
+            var client = harness.GetRequestClient<ConfirmUserEmailCommand>();
+            var response = await client.GetResponse<ConfirmUserEmailCommandRejected>(command);
 
             // Assert
-            Assert.True(await harness.Sent.Any<ConfirmEmailRequestRejected>());
-            Assert.Equal(ConfirmEmailRequestRejection.NotFound, response.Message.ErrorCode);
+            Assert.True(await harness.Sent.Any<ConfirmUserEmailCommandRejected>());
+            Assert.Equal(ConfirmUserEmailCommandRejection.NotFound, response.Message.ErrorCode);
         }
 
         [Fact]
@@ -66,7 +66,7 @@ namespace Giantnodes.Service.Identity.Application.Tests.Features.Registration.Re
             user.EmailConfirmed = true;
             await manager.CreateAsync(user);
 
-            var command = new ConfirmEmailRequest
+            var command = new ConfirmUserEmailCommand
             {
                 Email = user.Email,
                 Token = new Faker().Random.Word()
@@ -76,12 +76,12 @@ namespace Giantnodes.Service.Identity.Application.Tests.Features.Registration.Re
             await harness.Start();
 
             // Act
-            var client = harness.GetRequestClient<ConfirmEmailRequest>();
-            var response = await client.GetResponse<ConfirmEmailRequestRejected>(command);
+            var client = harness.GetRequestClient<ConfirmUserEmailCommand>();
+            var response = await client.GetResponse<ConfirmUserEmailCommandRejected>(command);
 
             // Assert
-            Assert.True(await harness.Sent.Any<ConfirmEmailRequestRejected>());
-            Assert.Equal(ConfirmEmailRequestRejection.AlreadyConfirmed, response.Message.ErrorCode);
+            Assert.True(await harness.Sent.Any<ConfirmUserEmailCommandRejected>());
+            Assert.Equal(ConfirmUserEmailCommandRejection.AlreadyConfirmed, response.Message.ErrorCode);
         }
 
         [Fact]
@@ -95,7 +95,7 @@ namespace Giantnodes.Service.Identity.Application.Tests.Features.Registration.Re
             user.EmailConfirmed = false;
             await manager.CreateAsync(user);
 
-            var command = new ConfirmEmailRequest
+            var command = new ConfirmUserEmailCommand
             {
                 Email = user.Email,
                 Token = new Faker().Random.Word()
@@ -105,12 +105,12 @@ namespace Giantnodes.Service.Identity.Application.Tests.Features.Registration.Re
             await harness.Start();
 
             // Act
-            var client = harness.GetRequestClient<ConfirmEmailRequest>();
-            var response = await client.GetResponse<ConfirmEmailRequestRejected>(command);
+            var client = harness.GetRequestClient<ConfirmUserEmailCommand>();
+            var response = await client.GetResponse<ConfirmUserEmailCommandRejected>(command);
 
             // Assert
-            Assert.True(await harness.Sent.Any<ConfirmEmailRequestRejected>());
-            Assert.Equal(ConfirmEmailRequestRejection.IdentityError, response.Message.ErrorCode);
+            Assert.True(await harness.Sent.Any<ConfirmUserEmailCommandRejected>());
+            Assert.Equal(ConfirmUserEmailCommandRejection.IdentityError, response.Message.ErrorCode);
         }
 
         [Fact]
@@ -125,7 +125,7 @@ namespace Giantnodes.Service.Identity.Application.Tests.Features.Registration.Re
             await manager.CreateAsync(user);
 
             var code = await manager.GenerateEmailConfirmationTokenAsync(user);
-            var command = new ConfirmEmailRequest
+            var command = new ConfirmUserEmailCommand
             {
                 Email = user.Email,
                 Token = code
@@ -135,8 +135,8 @@ namespace Giantnodes.Service.Identity.Application.Tests.Features.Registration.Re
             await harness.Start();
 
             // Act
-            var client = harness.GetRequestClient<ConfirmEmailRequest>();
-            await client.GetResponse<ConfirmEmailRequestResult>(command);
+            var client = harness.GetRequestClient<ConfirmUserEmailCommand>();
+            await client.GetResponse<ConfirmUserEmailCommandResult>(command);
 
             // Assert
             Assert.True(await harness.Published.Any<UserConfirmedEmailEvent>());
@@ -154,7 +154,7 @@ namespace Giantnodes.Service.Identity.Application.Tests.Features.Registration.Re
             await manager.CreateAsync(user);
 
             var code = await manager.GenerateEmailConfirmationTokenAsync(user);
-            var command = new ConfirmEmailRequest
+            var command = new ConfirmUserEmailCommand
             {
                 Email = user.Email,
                 Token = code
@@ -164,11 +164,11 @@ namespace Giantnodes.Service.Identity.Application.Tests.Features.Registration.Re
             await harness.Start();
 
             // Act
-            var client = harness.GetRequestClient<ConfirmEmailRequest>();
-            await client.GetResponse<ConfirmEmailRequestResult>(command);
+            var client = harness.GetRequestClient<ConfirmUserEmailCommand>();
+            await client.GetResponse<ConfirmUserEmailCommandResult>(command);
 
             // Assert
-            Assert.True(await harness.Sent.Any<ConfirmEmailRequestResult>());
+            Assert.True(await harness.Sent.Any<ConfirmUserEmailCommandResult>());
         }
     }
 }

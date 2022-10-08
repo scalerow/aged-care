@@ -1,6 +1,6 @@
-﻿namespace Giantnodes.Service.Identity.Abstractions.Registration.Requests
+﻿namespace Giantnodes.Service.Identity.Abstractions.Registration.Commands
 {
-    public record ConfirmEmailRequest
+    public record ConfirmUserEmailCommand
     {
         public string Token { get; init; } = string.Empty;
 

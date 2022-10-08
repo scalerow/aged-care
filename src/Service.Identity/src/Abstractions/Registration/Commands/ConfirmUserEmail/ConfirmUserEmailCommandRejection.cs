@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 
-namespace Giantnodes.Service.Identity.Abstractions.Registration.Requests
+namespace Giantnodes.Service.Identity.Abstractions.Registration.Commands
 {
-    public enum ConfirmEmailRequestRejection
+    public enum ConfirmUserEmailCommandRejection
     {
         [Description("The user associated with the token or email cannot be found")]
         NotFound,

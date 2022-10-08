@@ -2,7 +2,6 @@
 using Giantnodes.Service.Identity.Persistence.Seeders.Default;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
 using Npgsql;
 
 namespace Giantnodes.Service.Identity.Persistence.Seeders

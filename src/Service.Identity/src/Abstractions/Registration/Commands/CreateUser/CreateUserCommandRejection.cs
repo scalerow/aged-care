@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 
-namespace Giantnodes.Service.Identity.Abstractions.Registration.Requests
+namespace Giantnodes.Service.Identity.Abstractions.Registration.Commands
 {
-    public enum CreateUserRequestRejection
+    public enum CreateUserCommandRejection
     {
         [Description("The password provided is too weak")]
         PasswordTooWeak,

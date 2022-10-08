@@ -1,7 +1,6 @@
 ﻿using Giantnodes.Service.Identity.Abstractions.Registration.Commands;
 using Giantnodes.Service.Identity.Abstractions.Registration.Events;
-using Giantnodes.Service.Identity.Abstractions.Registration.Requests;
-using Giantnodes.Service.Identity.Application.Features.Registration;
+using Giantnodes.Service.Identity.Application.Features.Registration.Commands;
 using Giantnodes.Service.Identity.Persistence;
 using Giantnodes.Service.Identity.Shared.Tests.Bogus;
 using MassTransit;
@@ -10,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
-namespace Giantnodes.Service.Identity.Application.Tests.Features.Registration
+namespace Giantnodes.Service.Identity.Application.Tests.Features.Registration.Commands
 {
     public class CreateUserConsumerUnitTests
     {
@@ -36,7 +35,7 @@ namespace Giantnodes.Service.Identity.Application.Tests.Features.Registration
         public async Task Reject_When_Duplicate_Email_Exists()
         {
             // Arrange
-            var command = new CreateUserRequest
+            var command = new CreateUserCommand
             {
                 Email = "example@giantnodes.com",
                 GivenName = "John",
@@ -55,19 +54,19 @@ namespace Giantnodes.Service.Identity.Application.Tests.Features.Registration
             await harness.Start();
 
             // Act
-            var client = harness.GetRequestClient<CreateUserRequest>();
-            var response = await client.GetResponse<CreateUserRequestRejected>(command);
+            var client = harness.GetRequestClient<CreateUserCommand>();
+            var response = await client.GetResponse<CreateUserCommandRejected>(command);
 
             // Assert
-            Assert.True(await harness.Sent.Any<CreateUserRequestRejected>());
-            Assert.Equal(CreateUserRequestRejection.DuplicateEmail, response.Message.ErrorCode);
+            Assert.True(await harness.Sent.Any<CreateUserCommandRejected>());
+            Assert.Equal(CreateUserCommandRejection.DuplicateEmail, response.Message.ErrorCode);
         }
 
         [Fact]
         public async Task Reject_When_Weak_Password_Provided()
         {
             // Arrange
-            var command = new CreateUserRequest
+            var command = new CreateUserCommand
             {
                 Email = "example@giantnodes.com",
                 GivenName = "John",
@@ -79,19 +78,19 @@ namespace Giantnodes.Service.Identity.Application.Tests.Features.Registration
             await harness.Start();
 
             // Act
-            var client = harness.GetRequestClient<CreateUserRequest>();
-            var response = await client.GetResponse<CreateUserRequestRejected>(command);
+            var client = harness.GetRequestClient<CreateUserCommand>();
+            var response = await client.GetResponse<CreateUserCommandRejected>(command);
 
             // Assert
-            Assert.True(await harness.Sent.Any<CreateUserRequestRejected>());
-            Assert.Equal(CreateUserRequestRejection.PasswordTooWeak, response.Message.ErrorCode);
+            Assert.True(await harness.Sent.Any<CreateUserCommandRejected>());
+            Assert.Equal(CreateUserCommandRejection.PasswordTooWeak, response.Message.ErrorCode);
         }
 
         [Fact]
         public async Task Send_SendEmailConfirmationRequest_When_User_Registers()
         {
             // Arrange
-            var command = new CreateUserRequest
+            var command = new CreateUserCommand
             {
                 Email = "example@giantnodes.com",
                 GivenName = "John",
@@ -103,18 +102,18 @@ namespace Giantnodes.Service.Identity.Application.Tests.Features.Registration
             await harness.Start();
 
             // Act
-            var client = harness.GetRequestClient<CreateUserRequest>();
-            await client.GetResponse<CreateUserRequestResult>(command);
+            var client = harness.GetRequestClient<CreateUserCommand>();
+            await client.GetResponse<CreateUserCommandResult>(command);
 
             // Assert
-            Assert.True(await harness.Sent.Any<SendEmailConfirmationCommand>());
+            Assert.True(await harness.Sent.Any<SendUserEmailConfirmationCommand>());
         }
 
         [Fact]
         public async Task Publish_UserCreatedEvent_When_User_Registers()
         {
             // Arrange
-            var command = new CreateUserRequest
+            var command = new CreateUserCommand
             {
                 Email = "example@giantnodes.com",
                 GivenName = "John",
@@ -126,8 +125,8 @@ namespace Giantnodes.Service.Identity.Application.Tests.Features.Registration
             await harness.Start();
 
             // Act
-            var client = harness.GetRequestClient<CreateUserRequest>();
-            await client.GetResponse<CreateUserRequestResult>(command);
+            var client = harness.GetRequestClient<CreateUserCommand>();
+            await client.GetResponse<CreateUserCommandResult>(command);
 
             // Assert
             Assert.True(await harness.Published.Any<UserCreatedEvent>());

@@ -1,6 +1,6 @@
 ﻿namespace Giantnodes.Service.Identity.Abstractions.Registration.Commands
 {
-    public record SendEmailConfirmationCommand
+    public record SendUserEmailConfirmationCommand
     {
         public string Email { get; init; } = null!;
     }

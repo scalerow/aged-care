@@ -6,31 +6,31 @@ using MassTransit;
 using Microsoft.AspNetCore.Identity;
 using MimeKit;
 
-namespace Giantnodes.Service.Identity.Application.Features.Registration
+namespace Giantnodes.Service.Identity.Application.Features.Registration.Commands
 {
-    public class SendEmailConfirmationConsumer : IConsumer<SendEmailConfirmationCommand>
+    public class SendUserEmailConfirmationConsumer : IConsumer<SendUserEmailConfirmationCommand>
     {
         private readonly UserManager<ApplicationUser> _manager;
         private readonly IEmailService _email;
 
-        public SendEmailConfirmationConsumer(UserManager<ApplicationUser> manager, IEmailService email)
+        public SendUserEmailConfirmationConsumer(UserManager<ApplicationUser> manager, IEmailService email)
         {
             _manager = manager;
             _email = email;
         }
 
-        public async Task Consume(ConsumeContext<SendEmailConfirmationCommand> context)
+        public async Task Consume(ConsumeContext<SendUserEmailConfirmationCommand> context)
         {
             var user = await _manager.FindByEmailAsync(context.Message.Email);
             if (user == null)
             {
-                await context.RejectAsync<SendEmailConfirmationCommandRejected, SendEmailConfirmationCommandRejection>(SendEmailConfirmationCommandRejection.NotFound);
+                await context.RejectAsync<SendUserEmailConfirmationCommandRejected, SendUserEmailConfirmationCommandRejection>(SendUserEmailConfirmationCommandRejection.NotFound);
                 return;
             }
 
             if (user.EmailConfirmed)
             {
-                await context.RejectAsync<SendEmailConfirmationCommandRejected, SendEmailConfirmationCommandRejection>(SendEmailConfirmationCommandRejection.AlreadyConfirmed);
+                await context.RejectAsync<SendUserEmailConfirmationCommandRejected, SendUserEmailConfirmationCommandRejection>(SendUserEmailConfirmationCommandRejection.AlreadyConfirmed);
                 return;
             }
 

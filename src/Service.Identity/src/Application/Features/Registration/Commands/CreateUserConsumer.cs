@@ -1,13 +1,12 @@
 ﻿using Giantnodes.Service.Identity.Abstractions.Registration.Commands;
 using Giantnodes.Service.Identity.Abstractions.Registration.Events;
-using Giantnodes.Service.Identity.Abstractions.Registration.Requests;
 using Giantnodes.Service.Identity.Domain.Identity;
 using MassTransit;
 using Microsoft.AspNetCore.Identity;
 
-namespace Giantnodes.Service.Identity.Application.Features.Registration
+namespace Giantnodes.Service.Identity.Application.Features.Registration.Commands
 {
-    public class CreateUserConsumer : IConsumer<CreateUserRequest>
+    public class CreateUserConsumer : IConsumer<CreateUserCommand>
     {
         private readonly UserManager<ApplicationUser> _manager;
 
@@ -16,13 +15,13 @@ namespace Giantnodes.Service.Identity.Application.Features.Registration
             _manager = manager;
         }
 
-        public async Task Consume(ConsumeContext<CreateUserRequest> context)
+        public async Task Consume(ConsumeContext<CreateUserCommand> context)
         {
             var inputs = new List<string> { context.Message.Email, context.Message.GivenName, context.Message.FamilyName };
             var strength = Zxcvbn.Core.EvaluatePassword(context.Message.Password, inputs);
             if (strength.Score < 3)
             {
-                await context.RejectAsync<CreateUserRequestRejected, CreateUserRequestRejection>(CreateUserRequestRejection.PasswordTooWeak);
+                await context.RejectAsync<CreateUserCommandRejected, CreateUserCommandRejection>(CreateUserCommandRejection.PasswordTooWeak);
                 return;
             }
 
@@ -39,21 +38,21 @@ namespace Giantnodes.Service.Identity.Application.Features.Registration
             {
                 if (result.Errors.Any(x => x.Code == nameof(_manager.ErrorDescriber.DuplicateEmail)))
                 {
-                    await context.RejectAsync<CreateUserRequestRejected, CreateUserRequestRejection>(CreateUserRequestRejection.DuplicateEmail);
+                    await context.RejectAsync<CreateUserCommandRejected, CreateUserCommandRejection>(CreateUserCommandRejection.DuplicateEmail);
                     return;
                 }
 
                 var error = result.Errors.First();
-                await context.RejectAsync<CreateUserRequestRejected, CreateUserRequestRejection>(CreateUserRequestRejection.IdentityError);
+                await context.RejectAsync<CreateUserCommandRejected, CreateUserCommandRejection>(CreateUserCommandRejection.IdentityError);
                 return;
             }
 
-            var topic = KebabCaseEndpointNameFormatter.Instance.Message<SendEmailConfirmationCommand>();
+            var topic = KebabCaseEndpointNameFormatter.Instance.Message<SendUserEmailConfirmationCommand>();
             var endpoint = await context.GetSendEndpoint(new Uri($"queue:{topic}"));
-            await endpoint.Send<SendEmailConfirmationCommand>(new { user.Email });
+            await endpoint.Send<SendUserEmailConfirmationCommand>(new { user.Email });
 
             await context.Publish<UserCreatedEvent>(new { UserId = user.Id });
-            await context.RespondAsync<CreateUserRequestResult>(new { UserId = user.Id });
+            await context.RespondAsync<CreateUserCommandResult>(new { UserId = user.Id });
         }
     }
 }

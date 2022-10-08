@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-
-namespace Giantnodes.Service.Identity.Persistence.Seeders.Abstractions
+﻿namespace Giantnodes.Service.Identity.Persistence.Seeders.Abstractions
 {
     public interface IDatabaseSeeder
     {

@@ -1,6 +1,6 @@
-﻿namespace Giantnodes.Service.Identity.Abstractions.Registration.Requests
+﻿namespace Giantnodes.Service.Identity.Abstractions.Registration.Commands
 {
-    public record CreateUserRequest
+    public record CreateUserCommand
     {
         public string Email { get; init; } = null!;
 

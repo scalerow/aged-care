@@ -12,7 +12,7 @@ namespace Giantnodes.Service.Identity.Application.Tests
         public static IServiceCollection AddApplicationTestServices(this IServiceCollection services)
         {
             var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.Test.json").Build();
-            
+
             services.AddMailTestsServices();
 
             services.AddIdentityServices(configuration);

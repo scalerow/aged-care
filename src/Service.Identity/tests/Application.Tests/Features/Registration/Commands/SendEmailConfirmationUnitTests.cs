@@ -1,7 +1,7 @@
 ﻿using Bogus;
 using Giantnodes.Infrastructure.Mail.Services;
 using Giantnodes.Service.Identity.Abstractions.Registration.Commands;
-using Giantnodes.Service.Identity.Application.Features.Registration;
+using Giantnodes.Service.Identity.Application.Features.Registration.Commands;
 using Giantnodes.Service.Identity.Domain.Identity;
 using Giantnodes.Service.Identity.Mail.Templates;
 using Giantnodes.Service.Identity.Persistence;
@@ -16,7 +16,7 @@ using Moq;
 using System.Linq.Expressions;
 using Xunit;
 
-namespace Giantnodes.Service.Identity.Application.Tests.Features.Registration
+namespace Giantnodes.Service.Identity.Application.Tests.Features.Registration.Commands
 {
     public class SendEmailConfirmationUnitTests
     {
@@ -31,8 +31,8 @@ namespace Giantnodes.Service.Identity.Application.Tests.Features.Registration
                 .AddApplicationTestServices()
                 .AddMassTransitTestHarness(options =>
                 {
-                    options.AddConsumer<SendEmailConfirmationConsumer>()
-                        .Endpoint(e => e.Name = KebabCaseEndpointNameFormatter.Instance.Message<SendEmailConfirmationCommand>());
+                    options.AddConsumer<SendUserEmailConfirmationConsumer>()
+                        .Endpoint(e => e.Name = KebabCaseEndpointNameFormatter.Instance.Message<SendUserEmailConfirmationCommand>());
                 })
                 .BuildServiceProvider(true);
         }
@@ -41,7 +41,7 @@ namespace Giantnodes.Service.Identity.Application.Tests.Features.Registration
         public async Task Reject_When_User_Not_Found()
         {
             // Arrange
-            var command = new SendEmailConfirmationCommand
+            var command = new SendUserEmailConfirmationCommand
             {
                 Email = new Faker().Internet.Email()
             };
@@ -50,12 +50,12 @@ namespace Giantnodes.Service.Identity.Application.Tests.Features.Registration
             await harness.Start();
 
             // Act
-            var client = harness.GetRequestClient<SendEmailConfirmationCommand>();
-            var response = await client.GetResponse<SendEmailConfirmationCommandRejected>(command);
+            var client = harness.GetRequestClient<SendUserEmailConfirmationCommand>();
+            var response = await client.GetResponse<SendUserEmailConfirmationCommandRejected>(command);
 
             // Assert
-            Assert.True(await harness.Sent.Any<SendEmailConfirmationCommandRejected>());
-            Assert.Equal(SendEmailConfirmationCommandRejection.NotFound, response.Message.ErrorCode);
+            Assert.True(await harness.Sent.Any<SendUserEmailConfirmationCommandRejected>());
+            Assert.Equal(SendUserEmailConfirmationCommandRejection.NotFound, response.Message.ErrorCode);
         }
 
         [Fact]
@@ -69,7 +69,7 @@ namespace Giantnodes.Service.Identity.Application.Tests.Features.Registration
             user.EmailConfirmed = true;
             await manager.CreateAsync(user);
 
-            var command = new SendEmailConfirmationCommand
+            var command = new SendUserEmailConfirmationCommand
             {
                 Email = user.Email
             };
@@ -78,12 +78,12 @@ namespace Giantnodes.Service.Identity.Application.Tests.Features.Registration
             await harness.Start();
 
             // Act
-            var client = harness.GetRequestClient<SendEmailConfirmationCommand>();
-            var response = await client.GetResponse<SendEmailConfirmationCommandRejected>(command);
+            var client = harness.GetRequestClient<SendUserEmailConfirmationCommand>();
+            var response = await client.GetResponse<SendUserEmailConfirmationCommandRejected>(command);
 
             // Assert
-            Assert.True(await harness.Sent.Any<SendEmailConfirmationCommandRejected>());
-            Assert.Equal(SendEmailConfirmationCommandRejection.AlreadyConfirmed, response.Message.ErrorCode);
+            Assert.True(await harness.Sent.Any<SendUserEmailConfirmationCommandRejected>());
+            Assert.Equal(SendUserEmailConfirmationCommandRejection.AlreadyConfirmed, response.Message.ErrorCode);
         }
 
         [Fact]
@@ -97,7 +97,7 @@ namespace Giantnodes.Service.Identity.Application.Tests.Features.Registration
             user.EmailConfirmed = false;
             await manager.CreateAsync(user);
 
-            var command = new SendEmailConfirmationCommand
+            var command = new SendUserEmailConfirmationCommand
             {
                 Email = user.Email
             };
@@ -106,12 +106,12 @@ namespace Giantnodes.Service.Identity.Application.Tests.Features.Registration
             await harness.Start();
 
             // Act
-            var topic = KebabCaseEndpointNameFormatter.Instance.Message<SendEmailConfirmationCommand>();
+            var topic = KebabCaseEndpointNameFormatter.Instance.Message<SendUserEmailConfirmationCommand>();
             var endpoint = await harness.Bus.GetSendEndpoint(new Uri($"queue:{topic}"));
-            await endpoint.Send<SendEmailConfirmationCommand>(command);
+            await endpoint.Send<SendUserEmailConfirmationCommand>(command);
 
             // Assert
-            Assert.True(await harness.Consumed.Any<SendEmailConfirmationCommand>());
+            Assert.True(await harness.Consumed.Any<SendUserEmailConfirmationCommand>());
 
             Expression<Func<MailboxAddress, bool>> isCorrectAddress = x =>
                 x.Name == user.FullName &&
