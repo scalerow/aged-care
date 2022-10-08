@@ -87,7 +87,7 @@ namespace Giantnodes.Service.Identity.Application.Tests.Features.Registration.Co
         }
 
         [Fact]
-        public async Task Send_SendEmailConfirmationRequest_When_User_Registers()
+        public async Task Sends_SendEmailConfirmationCommand_When_User_Registers()
         {
             // Arrange
             var command = new CreateUserCommand
@@ -110,7 +110,7 @@ namespace Giantnodes.Service.Identity.Application.Tests.Features.Registration.Co
         }
 
         [Fact]
-        public async Task Publish_UserCreatedEvent_When_User_Registers()
+        public async Task Publish_Event_When_User_Registers()
         {
             // Arrange
             var command = new CreateUserCommand

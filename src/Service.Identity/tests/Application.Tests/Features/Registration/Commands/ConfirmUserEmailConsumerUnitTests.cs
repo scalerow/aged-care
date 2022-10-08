@@ -114,7 +114,7 @@ namespace Giantnodes.Service.Identity.Application.Tests.Features.Registration.Co
         }
 
         [Fact]
-        public async Task Publish_UserConfirmedEmailEvent_When_Email_Confirmed()
+        public async Task Publish_Event_When_Email_Confirmed()
         {
             // Arrange
             using var scope = _provider.CreateScope();
@@ -143,7 +143,7 @@ namespace Giantnodes.Service.Identity.Application.Tests.Features.Registration.Co
         }
 
         [Fact]
-        public async Task Responds_ConfirmEmailRequestResult_When_Email_Confirmed()
+        public async Task Responds_Result_When_Email_Confirmed()
         {
             // Arrange
             using var scope = _provider.CreateScope();
