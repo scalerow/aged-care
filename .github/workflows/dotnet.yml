@@ -12,8 +12,8 @@ on:
   workflow_dispatch:
 
 jobs:
-  test-infrastructure-mail:
-    name: Infrastructure.Mail
+  test-infrastructure:
+    name: Infrastructure
     runs-on: ubuntu-latest
     timeout-minutes: 5
     
@@ -26,15 +26,15 @@ jobs:
 
       - name: Restore dependencies
         run: dotnet restore
-        working-directory: src/Infrastructure.Mail
+        working-directory: src/Infrastructure
 
       - name: Build
         run: dotnet build --no-restore
-        working-directory: src/Infrastructure.Mail
+        working-directory: src/Infrastructure
 
       - name: Test
         run: dotnet test --no-build --verbosity normal
-        working-directory: src/Infrastructure.Mail
+        working-directory: src/Infrastructure
 
   test-service-identity:
     name: Service.Identity
