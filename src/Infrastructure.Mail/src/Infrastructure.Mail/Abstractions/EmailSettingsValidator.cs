@@ -6,8 +6,8 @@ namespace Giantnodes.Infrastructure.Mail.Abstractions
     {
         public ValidateOptionsResult Validate(string name, EmailSettings? options)
         {
-            if (options is null)
-                return ValidateOptionsResult.Fail($"The '{nameof(EmailSettings)}' Configuration object is null.");
+            if (options == null)
+                return ValidateOptionsResult.Fail($"The '{nameof(EmailSettings)}' configuration object is null.");
 
             if (string.IsNullOrWhiteSpace(options.Host))
                 return ValidateOptionsResult.Fail($"Property '{nameof(options.Host)}' cannot be blank.");

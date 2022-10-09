@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32519.379
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{02ED1328-20DA-4FD4-AC4C-920ED66F923F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Service.Gateway.Api", "src\Api\Giantnodes.Service.Gateway.Api.csproj", "{E4405009-7128-43CD-9627-1B667A708699}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{77F2F8B4-3171-4F56-A4BA-E095CDC8C4E7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E4405009-7128-43CD-9627-1B667A708699}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4405009-7128-43CD-9627-1B667A708699}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4405009-7128-43CD-9627-1B667A708699}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4405009-7128-43CD-9627-1B667A708699}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E4405009-7128-43CD-9627-1B667A708699} = {02ED1328-20DA-4FD4-AC4C-920ED66F923F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FD5A5511-7CEE-411F-8D60-CDA4247567B0}
+	EndGlobalSection
+EndGlobal
