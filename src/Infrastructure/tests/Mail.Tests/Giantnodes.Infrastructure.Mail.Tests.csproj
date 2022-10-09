@@ -23,7 +23,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\src\Infrastructure.Mail\Giantnodes.Infrastructure.Mail.csproj" />
+		<ProjectReference Include="..\..\src\Mail\Giantnodes.Infrastructure.Mail.csproj" />
 	</ItemGroup>
 
 </Project>

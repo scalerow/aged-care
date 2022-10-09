@@ -7,9 +7,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".referenced", ".referenced"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Infrastructure", "..\Infrastructure\src\Infrastructure\Giantnodes.Infrastructure.csproj", "{59E69B77-AC1E-47F3-B2DE-781E8F11DE61}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Infrastructure.Mail", "..\Infrastructure.Mail\src\Infrastructure.Mail\Giantnodes.Infrastructure.Mail.csproj", "{E83DE4BC-4700-47A8-B364-AEACB97D78BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Infrastructure.Mail", "..\Infrastructure\src\Mail\Giantnodes.Infrastructure.Mail.csproj", "{E83DE4BC-4700-47A8-B364-AEACB97D78BC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Infrastructure.MassTransit", "..\Infrastructure.MassTransit\src\Infrastructure.MassTransit\Giantnodes.Infrastructure.MassTransit.csproj", "{6460765E-04C5-4580-BB41-BE7B70233737}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Infrastructure.Mail.Tests", "..\Infrastructure\tests\Mail.Tests\Giantnodes.Infrastructure.Mail.Tests.csproj", "{BBE9AE9B-D527-42FC-9135-FE93D7E82829}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Infrastructure.MassTransit", "..\Infrastructure\src\MassTransit\Giantnodes.Infrastructure.MassTransit.csproj", "{6460765E-04C5-4580-BB41-BE7B70233737}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{80118CC8-740D-41AC-AB67-50AC19009B85}"
 EndProject
@@ -32,8 +34,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Service.Identity.Mail.Tests", "tests\Mail.Tests\Giantnodes.Service.Identity.Mail.Tests.csproj", "{32E28C18-A482-4F9E-8556-F71B3984CAF3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Service.Identity.Shared.Tests", "tests\Shared.Tests\Giantnodes.Service.Identity.Shared.Tests.csproj", "{F116387B-24AF-4183-993C-E1B56985463D}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Infrastructure.Mail.Tests", "..\Infrastructure.Mail\tests\Infrastructure.Mail.Tests\Giantnodes.Infrastructure.Mail.Tests.csproj", "{BBE9AE9B-D527-42FC-9135-FE93D7E82829}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Service.Tenants.Abstractions", "..\Service.Tenants\src\Abstractions\Giantnodes.Service.Tenants.Abstractions.csproj", "{7A4B2E3F-D223-4A99-8AC7-27EC28D01FD5}"
 EndProject

@@ -7,11 +7,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".referenced", ".referenced"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Infrastructure", "..\Infrastructure\src\Infrastructure\Giantnodes.Infrastructure.csproj", "{B45C368E-4F87-436A-85A6-8413836974C8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Infrastructure.Mail", "..\Infrastructure.Mail\src\Infrastructure.Mail\Giantnodes.Infrastructure.Mail.csproj", "{BD11F577-44FD-42BA-8039-8AC0F3E1CBDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Infrastructure.Mail", "..\Infrastructure\src\Mail\Giantnodes.Infrastructure.Mail.csproj", "{BD11F577-44FD-42BA-8039-8AC0F3E1CBDD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Infrastructure.Mail.Tests", "..\Infrastructure.Mail\tests\Infrastructure.Mail.Tests\Giantnodes.Infrastructure.Mail.Tests.csproj", "{71ACE2C7-7497-4B4F-93E3-286BA2DD7CBA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Infrastructure.Mail.Tests", "..\Infrastructure\tests\Mail.Tests\Giantnodes.Infrastructure.Mail.Tests.csproj", "{71ACE2C7-7497-4B4F-93E3-286BA2DD7CBA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Infrastructure.MassTransit", "..\Infrastructure.MassTransit\src\Infrastructure.MassTransit\Giantnodes.Infrastructure.MassTransit.csproj", "{B9AE1065-08F4-4ABF-B954-4CCF35732395}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Infrastructure.MassTransit", "..\Infrastructure\src\MassTransit\Giantnodes.Infrastructure.MassTransit.csproj", "{B9AE1065-08F4-4ABF-B954-4CCF35732395}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{AAAD8243-D210-47FF-AFD3-F6C9E413105C}"
 EndProject

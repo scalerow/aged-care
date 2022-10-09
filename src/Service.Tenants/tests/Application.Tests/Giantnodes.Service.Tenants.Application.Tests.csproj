@@ -25,7 +25,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\..\Infrastructure.Mail\tests\Infrastructure.Mail.Tests\Giantnodes.Infrastructure.Mail.Tests.csproj" />
+		<ProjectReference Include="..\..\..\Infrastructure\tests\Mail.Tests\Giantnodes.Infrastructure.Mail.Tests.csproj" />
 		<ProjectReference Include="..\..\src\Application\Giantnodes.Service.Tenants.Application.csproj" />
 		<ProjectReference Include="..\Shared.Tests\Giantnodes.Service.Tenants.Shared.Tests.csproj" />
 	</ItemGroup>

@@ -17,7 +17,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\..\Infrastructure.MassTransit\src\Infrastructure.MassTransit\Giantnodes.Infrastructure.MassTransit.csproj" />
+		<ProjectReference Include="..\..\..\Infrastructure\src\MassTransit\Giantnodes.Infrastructure.MassTransit.csproj" />
 		<ProjectReference Include="..\..\..\Service.Tenants\src\Abstractions\Giantnodes.Service.Tenants.Abstractions.csproj" />
 		<ProjectReference Include="..\Abstractions\Giantnodes.Service.Identity.Abstractions.csproj" />
 		<ProjectReference Include="..\Mail\Giantnodes.Service.Identity.Mail.csproj" />

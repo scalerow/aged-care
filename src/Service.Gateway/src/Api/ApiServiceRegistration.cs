@@ -8,8 +8,6 @@ namespace Giantnodes.Service.Gateway.Api
     {
         public static IServiceCollection AddApiServices(this IServiceCollection services, IConfiguration configuration, IHostEnvironment environment)
         {
-            services.AddHttpContextAccessor();
-
             services.AddRedisServices(configuration, environment);
             services.AddGraphQLServices(configuration, environment);
 

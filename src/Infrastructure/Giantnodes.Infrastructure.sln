@@ -3,7 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32519.379
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Giantnodes.Infrastructure", "src\Infrastructure\Giantnodes.Infrastructure.csproj", "{BF9E659F-55D7-44BA-825A-734FB16BA4EB}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{32B48411-E689-4718-B665-8C0B068A2F44}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Infrastructure", "src\Infrastructure\Giantnodes.Infrastructure.csproj", "{BF9E659F-55D7-44BA-825A-734FB16BA4EB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Infrastructure.Mail", "src\Mail\Giantnodes.Infrastructure.Mail.csproj", "{4BB221A1-8E20-4108-B93A-BFD662DF83D8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Infrastructure.MassTransit", "src\MassTransit\Giantnodes.Infrastructure.MassTransit.csproj", "{40F82110-4610-4A78-9B3A-3E8439A13895}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{DCF8FF6C-241E-41C2-84C8-EF1DDB82C5D5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Giantnodes.Infrastructure.Mail.Tests", "tests\Mail.Tests\Giantnodes.Infrastructure.Mail.Tests.csproj", "{0627C8B3-6EB3-4EFE-8D10-B58D5FDC4BF5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +25,27 @@ Global
 		{BF9E659F-55D7-44BA-825A-734FB16BA4EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF9E659F-55D7-44BA-825A-734FB16BA4EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF9E659F-55D7-44BA-825A-734FB16BA4EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0627C8B3-6EB3-4EFE-8D10-B58D5FDC4BF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0627C8B3-6EB3-4EFE-8D10-B58D5FDC4BF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0627C8B3-6EB3-4EFE-8D10-B58D5FDC4BF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0627C8B3-6EB3-4EFE-8D10-B58D5FDC4BF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BB221A1-8E20-4108-B93A-BFD662DF83D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BB221A1-8E20-4108-B93A-BFD662DF83D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BB221A1-8E20-4108-B93A-BFD662DF83D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BB221A1-8E20-4108-B93A-BFD662DF83D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40F82110-4610-4A78-9B3A-3E8439A13895}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40F82110-4610-4A78-9B3A-3E8439A13895}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40F82110-4610-4A78-9B3A-3E8439A13895}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40F82110-4610-4A78-9B3A-3E8439A13895}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BF9E659F-55D7-44BA-825A-734FB16BA4EB} = {32B48411-E689-4718-B665-8C0B068A2F44}
+		{0627C8B3-6EB3-4EFE-8D10-B58D5FDC4BF5} = {DCF8FF6C-241E-41C2-84C8-EF1DDB82C5D5}
+		{4BB221A1-8E20-4108-B93A-BFD662DF83D8} = {32B48411-E689-4718-B665-8C0B068A2F44}
+		{40F82110-4610-4A78-9B3A-3E8439A13895} = {32B48411-E689-4718-B665-8C0B068A2F44}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {8C4B7AB6-3764-4EB6-AB9B-57AD56F6AD43}
