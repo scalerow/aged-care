@@ -37,9 +37,8 @@ namespace Giantnodes.Service.Identity.Application.Features.Registration.Commands
             var code = await _manager.GenerateEmailConfirmationTokenAsync(user);
             var template = new EmailConfirmationTemplate
             {
+                User = user,
                 Code = code,
-                Email = user.Email,
-                FullName = user.FullName,
                 VerifyLink = $"/register/verify"
             };
 

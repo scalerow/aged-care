@@ -1,4 +1,5 @@
 ﻿using Giantnodes.Infrastructure.Mail.Abstractions;
+using Giantnodes.Service.Identity.Domain.Identity;
 using MimeKit;
 
 namespace Giantnodes.Service.Identity.Mail.Templates
@@ -13,11 +14,9 @@ namespace Giantnodes.Service.Identity.Mail.Templates
 
         public override MailboxAddress From => new MailboxAddress("Giantnodes", "noreply@giantnodes.com");
 
-        public string Code { get; set; } = string.Empty;
+        public ApplicationUser User { get; init; } = null!;
 
-        public string Email { get; set; } = string.Empty;
-
-        public string FullName { get; set; } = string.Empty;
+        public string Code { get; init; } = string.Empty;
 
         public string VerifyLink = string.Empty;
     }
