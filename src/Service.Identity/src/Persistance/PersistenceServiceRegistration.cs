@@ -18,6 +18,15 @@ namespace Giantnodes.Service.Identity.Persistence
                        .UseOpenIddict<OpenIdApplication, OpenIdAuthorization, OpenIdScope, OpenIdToken, Guid>();
                });
 
+            services
+                .AddPooledDbContextFactory<ApplicationDbContext>(options =>
+                {
+                    options
+                        .UseNpgsql(configuration.GetConnectionString(name: "DatabaseConnection"), o => o.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName))
+                        .UseSnakeCaseNamingConvention()
+                        .UseOpenIddict<OpenIdApplication, OpenIdAuthorization, OpenIdScope, OpenIdToken, Guid>();
+                });
+
             return services;
         }
     }

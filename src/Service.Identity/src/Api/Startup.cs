@@ -1,4 +1,5 @@
 ﻿using Giantnodes.Service.Identity.Application;
+using HotChocolate.AspNetCore;
 
 namespace Giantnodes.Service.Identity.Api
 {
@@ -16,6 +17,7 @@ namespace Giantnodes.Service.Identity.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddApplicationServices(_configuration, _environment);
+            services.AddApiServices(_configuration, _environment);
         }
 
         public void Configure(IApplicationBuilder app)
@@ -30,6 +32,13 @@ namespace Giantnodes.Service.Identity.Api
                 .UseEndpoints(endpoint =>
                 {
                     endpoint.MapControllers();
+
+                    endpoint
+                        .MapGraphQL()
+                        .WithOptions(new GraphQLServerOptions
+                        {
+                            Tool = { Enable = _environment.IsDevelopment() }
+                        });
                 });
         }
     }

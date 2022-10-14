@@ -9,6 +9,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="HotChocolate.AspNetCore" Version="12.15.0" />
+		<PackageReference Include="HotChocolate.Data" Version="12.15.0" />
+		<PackageReference Include="HotChocolate.Data.EntityFramework" Version="12.15.0" />
+		<PackageReference Include="HotChocolate.Stitching.Redis" Version="12.15.0" />
+		<PackageReference Include="HotChocolate.Types.Analyzers" Version="12.15.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.9">
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -16,6 +21,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\..\..\Infrastructure\src\GraphQL\Giantnodes.Infrastructure.GraphQL.csproj" />
 		<ProjectReference Include="..\Application\Giantnodes.Service.Identity.Application.csproj" />
 	</ItemGroup>
 
